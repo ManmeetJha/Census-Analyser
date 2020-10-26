@@ -14,7 +14,9 @@ import com.opencsv.bean.CsvToBeanBuilder;
 public class StateCensusAnalyser {
 
 
-    public int loadCsvData(String csvFile) {
+    public int loadCsvData(String csvFile) throws CustomCensusAnalyserException {
+        if (!csvFile.contains(".csv"))
+            throw new CustomCensusAnalyserException("Incorrect CSV File", CustomCensusAnalyserException.ExceptionType.IncorrectCsvFile);
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFile));) {
             CsvToBean<CSVStateCensus> csvToBean = new CsvToBeanBuilder<CSVStateCensus>(reader)
                     .withType(CSVStateCensus.class).withIgnoreLeadingWhiteSpace(true).build();
