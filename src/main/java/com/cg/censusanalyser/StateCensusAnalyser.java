@@ -13,10 +13,10 @@ import com.opencsv.bean.CsvToBeanBuilder;
 
 public class StateCensusAnalyser {
 
-
-    public int loadCsvData(String csvFile) throws CustomCensusAnalyserException {
-        if (!csvFile.contains(".csv"))
-            throw new CustomCensusAnalyserException("Incorrect CSV File", CustomCensusAnalyserException.ExceptionType.IncorrectCsvFile);
+    public int loadCsvData(String csvFile) throws CustomCensusAnalyserException, IOException {
+        if (!csvFile.contains(".csv")) {
+            throw new CustomCensusAnalyserException("Incorrect csv file", CustomCensusAnalyserException.ExceptionType.IncorrectCsvFile);
+        }
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFile));) {
             CsvToBean<CSVStateCensus> csvToBean = new CsvToBeanBuilder<CSVStateCensus>(reader)
                     .withType(CSVStateCensus.class).withIgnoreLeadingWhiteSpace(true).build();
@@ -28,7 +28,7 @@ public class StateCensusAnalyser {
             }
             return censusList.size();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             return 0;
         }
     }
