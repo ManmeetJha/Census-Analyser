@@ -13,6 +13,7 @@ public class StateAnalyserCensusTest {
             + "\\IndiaStateCode.cv";
     public static final String WRONG_STATE_CENSUS_DATA_FILE_EXT = "F:\\4. MANMEET JHA\\JAVA\\JAVA_UC_PROBLEMS_INTELLIJ\\Census-Analyser"
             + "\\IndiaStateCensusData.cv";
+    public static final String WRONG_DATA_IN_CENSUS_FILE = "F:\\4. MANMEET JHA\\JAVA\\JAVA_UC_PROBLEMS_INTELLIJ\\Census-Analyser\\IndiaStateCensusDataDelimiter.csv";
 
     @Test
     public void whenNumberOfRecordMatchesShouldPassTest() throws CustomCensusAnalyserException, IOException {
@@ -40,6 +41,17 @@ public class StateAnalyserCensusTest {
             Assert.assertEquals(CustomCensusAnalyserException.ExceptionType.IncorrectCsvFile, e.type);
         }
     }
+
+    @Test
+    public void whenFileDataIsImproperShouldThrowCustomException() throws IOException {
+        StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
+        try {
+            int totalEntriesInCsvFile = stateCensusAnalyser.loadCsvData(WRONG_DATA_IN_CENSUS_FILE);
+        } catch (CustomCensusAnalyserException e) {
+            Assert.assertEquals(CustomCensusAnalyserException.ExceptionType.IncorrectData, e.type);
+        }
+    }
+
 
 
 }
