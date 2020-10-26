@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cg.censusanalyser.StateCodeTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-10-26T16:47:50" hostname="LAPTOP-21LB24T9" time="0.142">
+  <properties/>
+  <testcase name="whenFileIsNotInCsvFormatShouldThrowCustomException" classname="com.cg.censusanalyser.StateCodeTest" time="0.003"/>
+  <testcase name="whenNumberOfRecordMatchesShouldPassTest" classname="com.cg.censusanalyser.StateCodeTest" time="0.097"/>
+  <testcase name="whenFileDataIsImproperShouldThrowCustomException" classname="com.cg.censusanalyser.StateCodeTest" time="0.004"/>
+  <testcase name="whenFileHeaderIsImproperShouldThrowCustomException" classname="com.cg.censusanalyser.StateCodeTest" time="0.003"/>
+  <testcase name="whenFileIsNotWhatisDesiredShouldThrowCustomException" classname="com.cg.censusanalyser.StateCodeTest" time="0.035"/>
+  <system-out><![CDATA[F:\Capgemini_training1\java_eclipse\IndiaStateCensusAnalyser\IndiaStateCensusData.csv
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

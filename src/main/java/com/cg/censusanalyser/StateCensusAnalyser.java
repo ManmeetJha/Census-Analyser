@@ -34,4 +34,28 @@ public class StateCensusAnalyser {
             throw new CustomCensusAnalyserException("File data not correct", CustomCensusAnalyserException.ExceptionType.IncorrectData);
         }
     }
+
+    public int loadStateCode(String csvFile) throws CustomCensusAnalyserException, IOException {
+        if (!csvFile.contains(".csv")) {
+            throw new CustomCensusAnalyserException("Incorrect csv file", CustomCensusAnalyserException.ExceptionType.IncorrectCsvFile);
+        }
+        try (Reader reader = Files.newBufferedReader(Paths.get(csvFile));) {
+            CsvToBean<CSVStates> csvToBean = new CsvToBeanBuilder<CSVStates>(reader).withType(CSVStates.class)
+                    .withIgnoreLeadingWhiteSpace(true).build();
+
+            List<CSVStates> stateCodeList = new ArrayList<CSVStates>();
+            Iterator<CSVStates> iterator = csvToBean.iterator();
+            while (iterator.hasNext()) {
+                stateCodeList.add(iterator.next());
+            }
+            return stateCodeList.size();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        } catch (NullPointerException e) {
+            throw new CustomCensusAnalyserException("File is empty", CustomCensusAnalyserException.ExceptionType.NO_DATA);
+        } catch (RuntimeException e) {
+            throw new CustomCensusAnalyserException("File data not correct", CustomCensusAnalyserException.ExceptionType.IncorrectData);
+        }
+    }
 }
