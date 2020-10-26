@@ -11,8 +11,7 @@ public class StateAnalyserCensusTest {
             + "\\IndiaStateCensusData.csv";
     public static final String WRONG_STATE_CENSUS_DATA_FILE = "F:\\4. MANMEET JHA\\JAVA\\JAVA_UC_PROBLEMS_INTELLIJ\\Census-Analyser"
             + "\\IndiaStateCensusData.cv";
-
-
+    
     @Test
     public void whenNumberOfRecordMatchesShouldPassTest() throws CustomCensusAnalyserException, IOException {
         StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
