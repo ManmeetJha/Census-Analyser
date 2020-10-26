@@ -13,6 +13,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
 
 public class StateCensusAnalyser {
 
+
     public int loadCsvData(String csvFile) {
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFile));) {
             CsvToBean<CSVStateCensus> csvToBean = new CsvToBeanBuilder<CSVStateCensus>(reader)
