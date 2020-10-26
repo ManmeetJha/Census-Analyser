@@ -30,6 +30,8 @@ public class StateCensusAnalyser {
         } catch (IOException e) {
             System.out.println(e.getMessage());
             return 0;
+        } catch (RuntimeException e) {
+            throw new CustomCensusAnalyserException("File data not correct", CustomCensusAnalyserException.ExceptionType.IncorrectData);
         }
     }
 }
